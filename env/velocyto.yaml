@@ -1,0 +1,12 @@
+name: velocyto
+channels:
+    - bioconda
+dependencies:
+    - velocyto.py
+## install conda env
+
+# conda env create --name velocyto --file env/velocyto.yaml
+# conda activate snake
+
+## uninstall conda env
+# conda env remove -n velocyto

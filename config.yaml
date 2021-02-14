@@ -1,0 +1,17 @@
+proj_name: ets04
+name: Noah Siegel
+email: nasiegel@ucdavis.edu
+
+# Directory
+indir: /group/lmillergrp/ets04/run1-prelim
+
+# Fastq file suffix, following the read pair designation
+suffix: _001.fastq.gz
+
+# Read pair designations
+r1_suf: R1
+r2_suf: R2
+
+# Parameters
+cell_number: 10000
+threads: 60

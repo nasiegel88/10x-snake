@@ -1,0 +1,17 @@
+name: snake
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+    - anaconda
+dependencies:
+    - snakemake =5.5.2
+    - yaml=0.2.5
+  
+## install conda env
+
+# conda env create --name snake --file env/snake.yaml
+# conda activate snake
+
+## uninstall conda env
+# conda env remove -n snake
