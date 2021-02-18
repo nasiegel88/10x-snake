@@ -100,7 +100,7 @@ output/
 * Note that there is no limit to the number of samples that can run through 10-snake.
 
 ### Next Steps...
-Most of the single analysis pipeline can be done in R using the package called [Seurat](). Here are some useful vignettes to get started with the downsteam analysis:
+Most of the single analysis pipeline can be done in R using the package called [Seurat](https://satijalab.org/seurat/). Here are some useful vignettes to get started with the downsteam analysis:
 * Normalization: [scTransform normalization](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * Integration of multiple samples: [Integration using scTransform](https://satijalab.org/seurat/archive/v3.0/integration.html)
 * Comparing treatement groups: [Fast integration](https://satijalab.org/seurat/articles/integration_rpca.html)
