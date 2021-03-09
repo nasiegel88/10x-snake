@@ -3,3 +3,5 @@ ref/
 output/
 stamps/
 apps/*
+*.out
+*.gtf
