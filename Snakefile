@@ -47,6 +47,15 @@ rule transcriptome:
         rm refdata-gex-GRCh38-2020-A.tar.gz
         """
 
+rule mask_off:
+    output: "repeat_msk.gtf"
+    # download mouse repeat annotation gtf
+    shell: 
+        """
+        curl -L https://usegalaxy.org/datasets/bbd44e69cb8906b586cf68965050587e/display?to_ext=gtf \
+        -o {output}
+        """
+
 rule run_cellranger:
     input: "ref"
     output: 
@@ -70,13 +79,15 @@ rule run_cellranger:
         """
         
 rule velocyto:
-    input: "output/{sample}"
+    input: 
+        reads = "output/{sample}",
+        repeats = "repeat_msk.gtf"
     output: "stamps/vel_count_stamps/{sample}.stamp"
     params: "ref/refdata-gex-GRCh38-2020-A/genes/genes.gtf"
     conda: "env/velocyto.yaml" 
     log: "output/logs/velocyto-{sample}"
     shell:
         """
-        velocyto run10x {input} {params}
+        velocyto run10x -m {input.repeats} {input.reads} {params}
         touch {output}
         """
