@@ -31,12 +31,12 @@ rule all:
         "ref"
 
 rule download_tar:
-    output: "refdata-gex-GRCh38-2020-A.tar.gz"
+    output: "refdata-gex-mm10-2020-A.tar.gz"
     # download mouse transcriptome
-    shell: "curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz"
+    shell: "curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz"
 
 rule transcriptome:
-    input: "refdata-gex-GRCh38-2020-A.tar.gz"
+    input: "refdata-gex-mm10-2020-A.tar.gz"
     output: directory("ref")
     log: "output/logs/transcriptome.log"
     shell:
@@ -44,7 +44,7 @@ rule transcriptome:
         mkdir -p {output}
         tar -xvf {input} -C {output}
         # clean up
-        rm refdata-gex-GRCh38-2020-A.tar.gz
+        rm refdata-gex-mm10-2020-A.tar.gz
         """
 
 rule mask_off:
@@ -61,7 +61,7 @@ rule run_cellranger:
     output: 
         STAMP = "stamps/count_stamps/{sample}.stamp",
         VELO = directory("output/{sample}")
-    params: directory("ref/refdata-gex-GRCh38-2020-A")
+    params: directory("ref/refdata-gex-mm10-2020-A")
     log: "output/logs/run_cellranger-{sample}"
     shell:
         """
@@ -83,7 +83,7 @@ rule velocyto:
         reads = "output/{sample}",
         repeats = "repeat_msk.gtf"
     output: "stamps/vel_count_stamps/{sample}.stamp"
-    params: "ref/refdata-gex-GRCh38-2020-A/genes/genes.gtf"
+    params: "ref/refdata-gex-mm10-2020-A/genes/genes.gtf"
     conda: "env/velocyto.yaml" 
     log: "output/logs/velocyto-{sample}"
     shell:
