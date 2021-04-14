@@ -52,7 +52,7 @@ rule mask_off:
     # download mouse repeat annotation gtf
     shell: 
         """
-        curl -L https://usegalaxy.org/datasets/bbd44e69cb8906b586cf68965050587e/display?to_ext=gtf \
+        curl -L https://usegalaxy.org/datasets/bbd44e69cb8906b5fa352d8126f18949/display?to_ext=gtf \
         -o {output}
         """
 

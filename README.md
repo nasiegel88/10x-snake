@@ -1,7 +1,7 @@
 # 10x-snake
 ### Author: Noah Siegel
 ### Email: nasiegel@ucdavis.edu
-### Last update: 2021-02-16
+### Last update: 2021-03-30
 General snakemake pipeline to generate cell matrices for single-cell analysis and ```.loom ```files to assess cell development.
 
 ## Summary
@@ -71,6 +71,22 @@ r2_suf: R2
 cell_number: 10000
 threads: 60
 ```
+#### Masking repeats
+If there is an issue with ``rule mask_off``, download a fresh repeat masking file since there is currently no way to ```wget``` or ```curl``` the annotation file from the [UCSC Genome Browswer](https://www.genome.ucsc.edu/). In order to include a download link of the annotation file in the Snakemake file the masking output file must be sent to [Galaxy](https://usegalaxy.org) in order to construct a temporary symbolic link. This link can substituted into ```rule mask_off``` in the Snakefile:
+
+```
+rule mask_off:
+    output: "repeat_msk.gtf"
+    # download mouse repeat annotation gtf
+    shell: 
+        """
+        curl -L [repeat gtf link] \
+        -o {output}
+        """
+```
+
+The current annotation GTF being used is from the Dec. 2011 (GRCm38/mm10) assembly as 10x is using this assembly for their reference database as of 2021-03-30. The annotation file can be download [here](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=611454127_NtvlaW6xBSIRYJEBI0iRDEWisITa&clade=mammal&org=Mouse&db=mm10&hgta_group=allTracks&hgta_track=rmsk&hgta_table=0&hgta_regionType=genome&position=chr12%3A56694976-56714605&hgta_outputType=primaryTable&hgta_outputType=gff&hgta_outFileName=mm10_rmsk.gtf)
+
 ##### Dry run:
 ```
 snakemake -np --use-conda
