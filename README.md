@@ -98,21 +98,29 @@ sbatch submit.sh
 ```
 
 ### Outputs:
-```
-output/
-      |
-      |__ETS_NEO__
-      |           |_outs_
-      |                  |
-      |                  |_filtered_feature_bc_matrix/ # used to assess single cell expression in Seurat
-      |                  |__velocyto/ETS_NEO_MI.loom # used to assess rna velocit in Seurat
-      |
-      |__FA_NEO__
-                  |_outs_
-                         |
-                         |_filtered_feature_bc_matrix/
-                         |__velocyto/FA_NEO_MI.loom
-```
+10x-snake
+	     ├── apps
+	     │   ├── cellranger-5.0.1
+	     │   └── cellranger-5.0.1.tar.gz
+	     ├── config.yaml
+	     ├── env
+	     │   ├── snake.yaml
+	     │   └── velocyto.yaml
+	     ├── output
+	     │   ├── ETS_NEO_M1
+	     │   ├── FA_NEO_MI
+	     │   └── logs
+	     ├── ranger-build.sh
+	     ├── README.md
+	     ├── ref
+	     │   └── refdata-gex-mm10-2020-A
+	     ├── repeat_msk.gtf
+	     ├── Snakefile
+	     ├── stamps
+	     │   ├── count_stamps
+	     │   └── vel_count_stamps
+	     └── submit.sh
+         
 * Note that there is no limit to the number of samples that can run through 10-snake.
 
 ### Next Steps...
