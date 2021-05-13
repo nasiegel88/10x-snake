@@ -98,6 +98,7 @@ sbatch submit.sh
 ```
 
 ### Outputs:
+```
 10x-snake
 	     ├── apps
 	     │   ├── cellranger-5.0.1
@@ -120,7 +121,7 @@ sbatch submit.sh
 	     │   ├── count_stamps
 	     │   └── vel_count_stamps
 	     └── submit.sh
-         
+```         
 * Note that there is no limit to the number of samples that can run through 10-snake.
 
 ### Next Steps...
